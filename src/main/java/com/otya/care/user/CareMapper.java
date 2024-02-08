@@ -15,7 +15,7 @@ public interface CareMapper {
     @Select("SELECT * FROM care_users WHERE name = #{name}")
     List<CareEntity> findByname(String name);//名前を指定してケア情報を取得する
 
-    // 新しいケア情報を挿入する
-    @Insert("INSERT INTO care_users (name, gender, age, address, care_needs) VALUES (#{name}, #{gender}, #{age}, #{address}, #{care_needs})")
+    // 新しいケア情報を挿入する(id 列を指定せず、UUIDはデフォルト値で生成される
+    @Insert("INSERT INTO care_users (id,name, gender, age, address, care_needs) VALUES (#{id},#{name}, #{gender}, #{age}, #{address}, #{care_needs})")
     void insertCare(CareEntity care);
 }

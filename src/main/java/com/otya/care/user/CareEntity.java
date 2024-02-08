@@ -1,14 +1,16 @@
 package com.otya.care.user;
 
+import java.util.UUID;
+
 public class CareEntity {
-    private int id;
+    private UUID id;
     private  String name;
     private String gender;
     private int age;
     private String address;
     private String care_needs;
 
-    public CareEntity(int id, String name, String gender, int age, String address, String care_needs) {
+    public CareEntity(UUID id, String name, String gender, int age, String address, String care_needs) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -21,11 +23,11 @@ public class CareEntity {
 
     }
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

@@ -1,13 +1,13 @@
 DROP TABLE IF EXISTS care_users;
 
-CREATE TABLE  care_users(
-  id int unsigned AUTO_INCREMENT,
+CREATE TABLE care_users(
+  id UUID DEFAULT UUID() PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   gender VARCHAR(10),
   age INT,
   address VARCHAR(250),
   care_needs VARCHAR(50),
-  PRIMARY KEY(id)
+  PRIMARY KEY (id)
 );
 
 INSERT INTO care_users (name,gender,age,address,care_needs) VALUES ("東京　太郎","男性",88,"東京都","要介護５");
@@ -17,4 +17,3 @@ INSERT INTO care_users (name,gender,age,address,care_needs) VALUES ("岩手　�
 INSERT INTO care_users (name,gender,age,address,care_needs) VALUES ("秋田　稲穂","女性",61,"秋田県","要支援２");
 INSERT INTO care_users (name,gender,age,address,care_needs) VALUES ("海道　北","女性",91,"北海道","要介護５");
 INSERT INTO care_users (name,gender,age,address,care_needs) VALUES ("沖縄　渚","男性",70,"東京都","要介護５");
-
