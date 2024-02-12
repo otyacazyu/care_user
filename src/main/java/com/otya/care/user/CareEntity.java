@@ -3,14 +3,14 @@ package com.otya.care.user;
 import java.util.UUID;
 
 public class CareEntity {
-    private UUID id;
+    private Long id;
     private  String name;
     private String gender;
     private int age;
     private String address;
     private String care_needs;
 
-    public CareEntity(UUID id, String name, String gender, int age, String address, String care_needs) {
+    public CareEntity(Long id, String name, String gender, int age, String address, String care_needs) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -23,11 +23,11 @@ public class CareEntity {
 
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -70,4 +70,7 @@ public class CareEntity {
     public void setCare_needs(String care_needs) {
         this.care_needs = care_needs;
     }
+
+
+
 }
