@@ -51,7 +51,7 @@ public class CareForm {
         this.address = address;
     }
 
-    public String getCare_needs() {
+    public String getCareNeeds() {
         return care_needs;
     }
 

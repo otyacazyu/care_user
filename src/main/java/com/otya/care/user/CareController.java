@@ -22,7 +22,7 @@ public class CareController {
     }
 
     @GetMapping("/care_user")
-    public List<Care> care_user(){
+    public List<Care> careUser(){
         return careMapper.findAll();
     }
 
@@ -32,7 +32,7 @@ public class CareController {
         String gender = form.getGender();
         int age = form.getAge();
         String address = form.getAddress();
-        String care_needs = form.getCare_needs();
+        String care_needs = form.getCareNeeds();
 
         careService.createCare(name,gender,age,address,care_needs,false);//ここでcareService.create()に必要なデータを渡す
         URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
@@ -40,5 +40,8 @@ public class CareController {
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body("問題なく登録されました"); //リクエストを作成して返信する
+
+
+        }
     }
-}
+

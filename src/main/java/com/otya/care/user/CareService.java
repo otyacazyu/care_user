@@ -21,7 +21,7 @@ public class CareService {
             newCareEntity.setGender(gender);
             newCareEntity.setAge(age);
             newCareEntity.setAddress(address);
-            newCareEntity.setCare_needs(careNeeds);
+            newCareEntity.setCareNeeds(careNeeds);
             careMapper.insertCare(newCareEntity);
         } else {
             throw new CareDuplicateException("重複データが見つかりました。確認し、再度行って下さい。");
