@@ -49,16 +49,16 @@ public class CareController {
         List<CareEntity> existingCares = careMapper.findByName(name);
 
         if(!existingCares.isEmpty()){// 提供されたフォームデータに基づいてケア情報を更新する。
-            CareEntity existaingCareEntity = existingCares.get(0);// ユニークな名前を想定
-            existingCares.setGender(from.getGender());
-            existingCares.setAge(from.getAge());
-            existingCares.setAddress(from.getAddress());
-            existingCares.setCareNeeds(from.getCareNeeds());
+            CareEntity existingCareEntity = existingCares.get(0);// ユニークな名前を想定
+            existingCareEntity.setGender(from.getGender());
+            existingCareEntity.setAge(from.getAge());
+            existingCareEntity.setAddress(from.getAddress());
+            existingCareEntity.setCareNeeds(from.getCareNeeds());
 
-            CareMapper.updateCare(existaingCareEntity);// データベースのケア情報を更新する
+            CareMapper.updateCare(existingCareEntity);// データベースのケア情報を更新する
 
             return ResponseEntity.ok("ケア情報が更新されました。");
-        }else{
+        }else{// 指定された名前のケアユーザーが見つからない場合
             return ResponseEntity.notFound().build();
         }
 
