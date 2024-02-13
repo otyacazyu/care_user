@@ -8,13 +8,14 @@ public class CareEntity {
     private String address;
     private String careNeeds;
 
-    public CareEntity(Long id, String name, String gender, int age, String address, String care_needs) {
+
+    public CareEntity(Long id, String name, String gender, int age, String address, String careNeeds) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.address = address;
-        this.careNeeds = care_needs;
+        this.careNeeds = careNeeds;
     }
 
     public CareEntity() {
@@ -65,8 +66,8 @@ public class CareEntity {
         return careNeeds;
     }
 
-    public void setCareNeeds(String care_needs) {
-        this.careNeeds = care_needs;
+    public void setCareNeeds(String careNeeds) {
+        this.careNeeds = careNeeds;
     }
 
 

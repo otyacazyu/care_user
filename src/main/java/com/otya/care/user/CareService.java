@@ -13,7 +13,7 @@ public class CareService {
     }
 
     public void createCare(String name, String gender, int age, String address, String careNeeds, boolean allowDuplicate) throws CareDuplicateException {
-        List<CareEntity> existingCares = careMapper.findByname(name); //重複チェック
+        List<CareEntity> existingCares = careMapper.findByName(name); //重複チェック
         // 重複がない場合または許可されている場合、新しいデータを作成して挿入
         if (existingCares.isEmpty() || allowDuplicate) {
             CareEntity newCareEntity = new CareEntity();
