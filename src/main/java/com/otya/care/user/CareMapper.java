@@ -3,6 +3,7 @@ package com.otya.care.user;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -13,7 +14,12 @@ public interface CareMapper {
     List<Care> findAll();
 
     @Select("SELECT * FROM care_users WHERE name = #{name}")
-    List<CareEntity> findByname(String name);//名前を指定してケア情報を取得する
+    List<CareEntity> findByName(String name);//名前を指定してケア情報を取得する
+
+    @Update("SELECT * FROM care_user WHERE name = #{name}")
+    static void updateCare(CareEntity existaingCareEntity) {
+
+    }
 
     // 新しいケア情報を挿入する(id 列を指定せず、UUIDはデフォルト値で生成される
     @Insert("INSERT INTO care_users (name, gender, age, address, care_needs) VALUES (#{name}, #{gender}, #{age}, #{address}, #{care_needs})")

@@ -8,7 +8,7 @@ public class CareForm {
     private String gender;
     private  int age;
     private String address;
-    private  String care_needs;
+    private  String careNeeds;
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     public CareForm(String name, String gender, int age, String address, String careNeeds) {
@@ -16,7 +16,7 @@ public class CareForm {
         this.gender = gender;
         this.age = age;
         this.address = address;
-        this.care_needs = careNeeds;
+        this.careNeeds = careNeeds;
     }
 
     public String getName() {
@@ -51,11 +51,11 @@ public class CareForm {
         this.address = address;
     }
 
-    public String getCare_needs() {
-        return care_needs;
+    public String getCareNeeds() {
+        return careNeeds;
     }
 
-    public void setCare_needs(String care_needs) {
-        this.care_needs = care_needs;
+    public void setCareNeeds(String careNeeds) {
+        this.careNeeds = careNeeds;
     }
 }
