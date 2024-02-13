@@ -1,22 +1,21 @@
 package com.otya.care.user;
 
-import java.util.UUID;
-
 public class CareEntity {
     private Long id;
     private  String name;
     private String gender;
     private int age;
     private String address;
-    private String care_needs;
+    private String careNeeds;
 
-    public CareEntity(Long id, String name, String gender, int age, String address, String care_needs) {
+
+    public CareEntity(Long id, String name, String gender, int age, String address, String careNeeds) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.address = address;
-        this.care_needs = care_needs;
+        this.careNeeds = careNeeds;
     }
 
     public CareEntity() {
@@ -63,12 +62,12 @@ public class CareEntity {
         this.address = address;
     }
 
-    public String getCare_needs() {
-        return care_needs;
+    public String getCareNeeds() {
+        return careNeeds;
     }
 
-    public void setCare_needs(String care_needs) {
-        this.care_needs = care_needs;
+    public void setCareNeeds(String careNeeds) {
+        this.careNeeds = careNeeds;
     }
 
 
