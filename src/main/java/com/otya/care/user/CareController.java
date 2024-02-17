@@ -34,9 +34,9 @@ public class CareController {
         String gender = form.getGender();
         int age = form.getAge();
         String address = form.getAddress();
-        String care_needs = form.getCareNeeds();
+        String careNeeds = form.getCareNeeds();
 
-        careService.createCare(name,gender,age,address,care_needs,false);//ここでcareService.create()に必要なデータを渡す
+        careService.createCare(name,gender,age,address,careNeeds,false);//ここでcareService.create()に必要なデータを渡す
         URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
                 .path("/care_user/id")
                 .build()
@@ -44,9 +44,9 @@ public class CareController {
         return ResponseEntity.created(url).body("問題なく登録されました"); //リクエストを作成して返信する
 
     }
-    @PutMapping("care_user/{name}")    //既存のケア情報を更新する（PUT）
-    public ResponseEntity<String> updateCare(@PathVariable String name, @RequestBody CareForm from){
-        List<CareEntity> existingCares = careMapper.findByName(name);
+    @PutMapping("care_user/{id}")    //既存のケア情報を更新する（PUT）
+    public ResponseEntity<String> updateCare(@PathVariable Long id, @RequestBody CareForm from){
+        List<CareEntity> existingCares = careMapper.findByName(String.valueOf(id));
 
         if(!existingCares.isEmpty()){// 提供されたフォームデータに基づいてケア情報を更新する。
             CareEntity existingCareEntity = existingCares.get(0);// ユニークな名前を想定
@@ -55,7 +55,7 @@ public class CareController {
             existingCareEntity.setAddress(from.getAddress());
             existingCareEntity.setCareNeeds(from.getCareNeeds());
 
-            CareMapper.updateCare(existingCareEntity);// データベースのケア情報を更新する
+            CareService.updateCare(existingCareEntity);// データベースのケア情報を更新する
 
             return ResponseEntity.ok("ケア情報が更新されました。");
         }else{// 指定された名前のケアユーザーが見つからない場合

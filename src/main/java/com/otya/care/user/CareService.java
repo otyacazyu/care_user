@@ -1,5 +1,6 @@
 package com.otya.care.user;
 
+
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -12,10 +13,14 @@ public class CareService {
         this.careMapper = careMapper;
     }
 
+    public static void updateCare(CareEntity existingCareEntity) {//controllerからServiceに依存するようにしたいが、メソッドがどう書けばいいのか分からない
+
+    }
+
     public void createCare(String name, String gender, int age, String address, String careNeeds, boolean allowDuplicate) throws CareDuplicateException {
         List<CareEntity> existingCares = careMapper.findByName(name); //重複チェック
         // 重複がない場合または許可されている場合、新しいデータを作成して挿入
-        if (existingCares.isEmpty() || allowDuplicate) {
+        if (existingCares.isEmpty() || allowDuplicate) {// 同姓同名の利用者でも登録ができるように
 
             CareEntity newCareEntity = new CareEntity();
             newCareEntity.setName(name);
@@ -29,4 +34,5 @@ public class CareService {
 
         }
     }
+
 }

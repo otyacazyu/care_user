@@ -6,15 +6,15 @@ public class Care {
     private String gender;
     private int age;
     private String address;
-    private String care_needs;
+    private String careNeeds;
 
-    public Care(int id, String name, String gender, int age, String address, String care_needs) {
+    public Care(int id, String name, String gender, int age, String address, String careNeeds) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.address = address;
-        this.care_needs = care_needs;
+        this.careNeeds = careNeeds;
     }
 
     public int getId() {
@@ -58,10 +58,10 @@ public class Care {
     }
 
     public String getCareNeeds() {
-        return care_needs;
+        return careNeeds;
     }
 
     public void setCareNeeds(String careNeeds) {
-        this.care_needs = careNeeds;
+        this.careNeeds = careNeeds;
     }
 }
