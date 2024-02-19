@@ -55,7 +55,8 @@ public class CareController {
             existingCareEntity.setAddress(from.getAddress());
             existingCareEntity.setCareNeeds(from.getCareNeeds());
 
-            CareService.updateCare(existingCareEntity);// データベースのケア情報を更新する
+
+            careMapper.updateCare(existingCareEntity);// データベースのケア情報を更新する
 
             return ResponseEntity.ok("ケア情報が更新されました。");
         }else{// 指定された名前のケアユーザーが見つからない場合

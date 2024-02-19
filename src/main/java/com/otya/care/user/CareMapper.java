@@ -19,11 +19,9 @@ public interface CareMapper {
     List<CareEntity> findByName(String name);//名前を指定してケア情報を取得する
 
     @Update("UPDATE care_users SET gender = #{gender}, age = #{age}, address = #{address}, care_needs =#{careNeeds} WHERE id = #{id} ")
-    void updateCare(CareEntity existingCareEntity); //PUT ケア情報の一部を変更し、登録する
+    void updateCare(CareEntity CareEntity);//PUT ケア情報の一部を変更し、登録する
 
-
-
-// 新しいケア情報を挿入する(id 列を指定せず、UUIDはデフォルト値で生成される
+    // 新しいケア情報を挿入する(id 列を指定せず、UUIDはデフォルト値で生成される
     @Insert("INSERT INTO care_users (name, gender, age, address, care_needs) VALUES (#{name}, #{gender}, #{age}, #{address}, #{care_needs})")
     void insertCare(CareEntity care);
 
