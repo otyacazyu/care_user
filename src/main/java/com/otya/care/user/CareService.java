@@ -1,7 +1,7 @@
 package com.otya.care.user;
 
-
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -11,10 +11,6 @@ public class CareService {
 
     public CareService(CareMapper careMapper) {
         this.careMapper = careMapper;
-    }
-
-    public static void updateCare(CareEntity existingCareEntity) {//controllerからServiceに依存するようにしたいが、メソッドがどう書けばいいのか分からない
-
     }
 
     public void createCare(String name, String gender, int age, String address, String careNeeds, boolean allowDuplicate) throws CareDuplicateException {
@@ -35,4 +31,16 @@ public class CareService {
         }
     }
 
+    public void updateCare(String gender,int age,String address,String careNeeds) {
+        List<CareEntity> existingCares = careMapper.updateCare(new CareEntity());
+        if (!existingCares.isEmpty()) {// 提供されたフォームデータに基づいてケア情報を更新する。
+            CareEntity existingCareEntity = existingCares.get(0);// ユニークな名前を想定
+            existingCareEntity.setGender(gender);
+            existingCareEntity.setAge(age);
+            existingCareEntity.setAddress(address);
+            existingCareEntity.setCareNeeds(careNeeds);
+
+            careMapper.updateCare(existingCareEntity);// データベースのケア情報を更新する
+        }
+    }
 }
