@@ -14,6 +14,10 @@ public class CareService {
         this.careMapper = careMapper;
     }
 
+    public List<Care> findAll() {
+        return careMapper.findAll();
+    }
+
     public void createCare(String name, String gender, int age, String address, String careNeeds, boolean allowDuplicate) throws CareDuplicateException {
         List<CareEntity> existingCares = careMapper.findByName(name); //重複チェック
         // 重複がない場合または許可されている場合、新しいデータを作成して挿入
@@ -43,5 +47,13 @@ public class CareService {
 
             careMapper.updateCare(existingCareEntity);// データベースのケア情報を更新する
         }
+    }
+
+
+    public List<CareEntity> findByName(String s) {
+        return null;
+    }
+
+    public void updateCare(CareEntity existingCareEntity) {
     }
 }

@@ -14,18 +14,18 @@ import java.util.List;
 
 @RestController
 public class CareController {
-    private final CareMapper careMapper;
+
     private final CareService careService;
 
 
-    public CareController(CareMapper careMapper, CareService careService) {
-        this.careMapper = careMapper;
+    public CareController(CareService careService) {
+
         this.careService = careService;
     }
 
     @GetMapping("/care_user")
     public List<Care> careUser(){
-        return careMapper.findAll();
+        return careService.findAll();
     }
 
     @PostMapping("/care_user")
@@ -44,11 +44,11 @@ public class CareController {
         return ResponseEntity.created(url).body("問題なく登録されました"); //リクエストを作成して返信する
 
     }
-    @PutMapping("care_user/{id}")    //既存のケア情報を更新する（PUT）
-    public ResponseEntity<String> updateCare(@PathVariable Long id, @RequestBody CareForm from){
-        List<CareEntity> existingCares = careMapper.findByName(String.valueOf(id));
+    @PutMapping("care_user/{name}")    //既存のケア情報を更新する（PUT）
+    public ResponseEntity<String> updateCare(@PathVariable String name, @RequestBody CareForm from){
+        List<CareEntity> existingCares = careService.findByName(String.valueOf(name));
 
-        if(!existingCares.isEmpty()){// 提供されたフォームデータに基づいてケア情報を更新する。
+        if(!existingCares.isEmpty()){// 提供されたフォームデータに基づいてケア情報を更新する。// ユニークな名前を想定
             CareEntity existingCareEntity = existingCares.get(0);// ユニークな名前を想定
             existingCareEntity.setGender(from.getGender());
             existingCareEntity.setAge(from.getAge());
@@ -61,7 +61,7 @@ public class CareController {
                     from.getAddress(),
                     from.getCareNeeds());
 
-            careMapper.updateCare(existingCareEntity);// データベースのケア情報を更新する
+            careService.updateCare(existingCareEntity);// データベースのケア情報を更新する
 
             return ResponseEntity.ok("ケア情報が更新されました。");
         }else{// 指定された名前のケアユーザーが見つからない場合
