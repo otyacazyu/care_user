@@ -21,6 +21,10 @@ public class CareEntity {
 
     }
 
+    public static boolean isEmpty() {
+        return false;
+    }
+
     public Long getId() {
         return id;
     }

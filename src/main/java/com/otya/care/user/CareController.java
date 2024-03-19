@@ -55,11 +55,11 @@ public class CareController {
             existingCareEntity.setAddress(from.getAddress());
             existingCareEntity.setCareNeeds(from.getCareNeeds());
 
-            careService.updateCare(from.getGender(),
+            careService.updateCare(
+                    from.getGender(),
                     from.getAge(),
                     from.getAddress(),
-                    from.getCareNeeds()
-            );
+                    from.getCareNeeds());
 
             careMapper.updateCare(existingCareEntity);// データベースのケア情報を更新する
 

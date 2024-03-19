@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class CareService {
 
@@ -32,9 +33,9 @@ public class CareService {
     }
 
     public void updateCare(String gender,int age,String address,String careNeeds) {
-        List<CareEntity> existingCares = careMapper.updateCare(new CareEntity());
-        if (!existingCares.isEmpty()) {// 提供されたフォームデータに基づいてケア情報を更新する。
-            CareEntity existingCareEntity = existingCares.get(0);// ユニークな名前を想定
+        careMapper.updateCare(new CareEntity());
+        if (CareEntity.isEmpty()) {// 提供されたフォームデータに基づいてケア情報を更新する。
+            CareEntity existingCareEntity = new CareEntity();// ユニークな名前を想定
             existingCareEntity.setGender(gender);
             existingCareEntity.setAge(age);
             existingCareEntity.setAddress(address);
